@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070b14">
+<meta name="description" content="ICE FPS BOOST X — Android gaming performance toolkit and FPS settings guide.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>ICE FPS BOOST X</title>
+<style>
+:root{--bg:#070b14;--panel:#0d1422;--line:#1c2b43;--cyan:#45e6ff;--blue:#3984ff;--muted:#91a5c2;--text:#eef7ff;--green:#5bffb2}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 80% -10%,#14335a 0,transparent 38%),radial-gradient(ellipse at 0% 30%,#102238 0,transparent 30%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+.wrap{width:min(1100px,100%);margin:auto;padding:22px 16px 40px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border:1px solid #3bdff9;border-radius:13px;display:grid;place-items:center;color:var(--cyan);font-weight:950;box-shadow:0 0 22px #1bdcff22;transform:skew(-4deg)}
+h1{font-size:clamp(20px,4vw,30px);margin:0;letter-spacing:1px} .sub{font-size:12px;color:var(--muted);letter-spacing:2px}
+.badge{border:1px solid #245b66;background:#0a202b;color:var(--green);font-size:11px;border-radius:30px;padding:8px 11px;white-space:nowrap}
+.hero{border:1px solid #24415e;background:linear-gradient(120deg,#101d30ee,#0a111dee);border-radius:24px;padding:25px;position:relative;overflow:hidden;box-shadow:0 20px 70px #0005}
+.hero:after{content:"120";position:absolute;right:8px;top:-32px;font-size:clamp(110px,25vw,220px);font-weight:1000;color:#43ddff0a;pointer-events:none}
+.kicker{color:var(--cyan);font-size:12px;letter-spacing:2.5px;font-weight:800}
+.hero h2{font-size:clamp(26px,5vw,42px);line-height:1.12;margin:10px 0}.hero p{max-width:620px;color:#a8bad1;line-height:1.7;margin-bottom:20px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button,select{font:inherit;color:var(--text);background:#101e31;border:1px solid #29415d;border-radius:12px;padding:12px 14px}
+button{cursor:pointer;transition:.18s}button:hover{transform:translateY(-1px);border-color:var(--cyan)}
+.primary{background:linear-gradient(100deg,#22b9dc,#397dff);color:#04101b;border:0;font-weight:900;box-shadow:0 8px 24px #22b9dc25}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:16px}
+.card{grid-column:span 6;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#0e1726,#0a101b);padding:18px;min-width:0}
+.card.third{grid-column:span 4}.card.full{grid-column:span 12}
+.card h3{margin:0 0 6px;font-size:16px}.desc{color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 14px}
+.metric{font-size:30px;font-weight:850;letter-spacing:-1px}.metric small{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:0}
+.pill{display:inline-block;padding:5px 9px;border:1px solid #214a5c;color:var(--cyan);border-radius:20px;font-size:11px;margin:3px 4px 0 0}
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:7px}
+select{width:100%;margin-bottom:12px}
+.statline{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #182538;font-size:13px}.statline:last-child{border:0}.statline span{color:var(--muted);text-align:right;overflow-wrap:anywhere}
+.notice{background:#211c0e;border:1px solid #66501d;color:#f6d990;border-radius:13px;padding:12px 14px;font-size:12px;line-height:1.65;margin-top:15px}
+.result{min-height:40px;color:#c6d7ec;font-size:13px;line-height:1.65;margin-top:12px}
+canvas{width:100%;height:88px;background:#08101a;border-radius:10px;border:1px solid #17273a;margin-top:12px}
+footer{text-align:center;color:#6f829c;font-size:11px;margin-top:24px;line-height:1.7}
+@media(max-width:700px){.card,.card.third{grid-column:span 12}.hero{padding:20px}.badge{display:none}.wrap{padding:16px 12px 30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <div class="brand"><div class="logo">ICE</div><div><h1>ICE FPS BOOST X</h1><div class="sub">MOBILE GAMING TOOLKIT</div></div></div>
+ <div class="badge">● WEB MODE ACTIVE</div>
+</header>
+<section class="hero">
+ <div class="kicker">PERFORMANCE CONTROL CENTER</div>
+ <h2>PLAY SMARTER.<br><span style="color:var(--cyan)">PUSH YOUR LIMITS.</span></h2>
+ <p>เครื่องมือช่วยตรวจสอบความสามารถของเบราว์เซอร์ เลือกเป้าหมาย FPS และดูคำแนะนำปรับเกมให้เหมาะกับอุปกรณ์ของมึง</p>
+ <div class="row">
+  <button class="primary" id="boostBtn">⚡ START GAME BOOST</button>
+  <button id="checkBtn">⌁ CHECK DEVICE</button>
+ </div>
+ <div class="result" id="boostResult" aria-live="polite">พร้อมแล้ว กด START GAME BOOST เพื่อดูคำแนะนำที่เหมาะกับการเล่นเกม</div>
+</section>
+<div class="grid">
+ <section class="card third">
+  <h3>🎯 FPS TARGET</h3><p class="desc">เลือกเป้าหมายเฟรมเรตสำหรับใช้เป็นแนวทางตั้งค่าในเกม</p>
+  <label for="fpsTarget">เป้าหมาย FPS</label>
+  <select id="fpsTarget"><option>60 FPS</option><option>90 FPS</option><option>120 FPS</option><option>144 FPS</option></select>
+  <div class="metric" id="targetDisplay">60 <small>FPS TARGET</small></div>
+  <div class="result" id="fpsAdvice">เริ่มจาก 60 FPS แล้วตรวจดูว่าเกมและหน้าจอรองรับหรือไม่</div>
+ </section>
+ <section class="card third">
+  <h3>🎮 GAME SELECTOR</h3><p class="desc">เลือกเกมเพื่อรับคำแนะนำทั่วไป</p>
+  <label for="gameSelect">เกมที่ต้องการเล่น</label>
+  <select id="gameSelect">
+   <option>Free Fire</option><option>PUBG Mobile</option><option>Blood Strike</option><option>Roblox</option><option>Call of Duty: Mobile</option><option>Mobile Legends</option><option>Genshin Impact</option><option>เกมอื่น ๆ</option>
+  </select>
+  <div class="result" id="gameAdvice">เลือกกราฟิกและเฟรมเรตจากเมนูในเกมเป็นหลัก</div>
+ </section>
+ <section class="card third">
+  <h3>📊 WEB FPS MONITOR</h3><p class="desc">วัดอัตราเฟรมของแอนิเมชันบนหน้านี้เท่านั้น ไม่ใช่ FPS ของเกมอื่น</p>
+  <div class="metric"><span id="webFps">—</span> <small>WEB FPS</small></div>
+  <canvas id="fpsCanvas" width="600" height="100" aria-label="กราฟเฟรมเรตของแอนิเมชันเว็บไซต์"></canvas>
+  <div class="result">เปิดหน้านี้ค้างไว้เพื่อดูค่าที่เบราว์เซอร์เรนเดอร์ได้</div>
+ </section>
+ <section class="card">
+  <h3>📱 DEVICE CHECK</h3><p class="desc">ข้อมูลที่เบราว์เซอร์อนุญาตให้เว็บไซต์อ่านได้</p>
+  <div class="statline">ขนาดหน้าจอ <span id="screenSize">กำลังตรวจสอบ…</span></div>
+  <div class="statline">Device pixel ratio <span id="pixelRatio">—</span></div>
+  <div class="statline">อัตรารีเฟรชหน้าจอ <span>เว็บอ่านค่า Hz จริงโดยตรงไม่ได้</span></div>
+  <div class="statline">เบราว์เซอร์ <span id="browserInfo">—</span></div>
+  <div class="statline">Motion preference <span id="motionInfo">—</span></div>
+ </section>
+ <section class="card">
+  <h3>🛠️ GAME OPTIMIZATION</h3><p class="desc">คำแนะนำปลอดภัยที่มึงลองทำได้เอง</p>
+  <div class="statline">กราฟิก <span>เริ่มที่ Smooth / Low หากเกมกระตุก</span></div>
+  <div class="statline">เฟรมเรต <span>เลือกค่าสูงสุดที่เกมเปิดให้เลือก</span></div>
+  <div class="statline">อุณหภูมิ <span>พักเครื่องหากร้อนจัด</span></div>
+  <div class="statline">แบตเตอรี่ <span>ปิดโหมดประหยัดพลังงานขณะเล่น ถ้าจำเป็น</span></div>
+  <div class="statline">แอปเบื้องหลัง <span>ปิดเฉพาะแอปที่ไม่ใช้</span></div>
+ </section>
+ <section class="card full">
+  <h3>🧭 QUICK PERFORMANCE CHECKLIST</h3>
+  <p class="desc">ทำทีละข้อก่อนเข้าเกม เพื่อช่วยลดอาการกระตุกโดยไม่แก้ไฟล์เกม</p>
+  <div class="row">
+   <button id="checklistBtn" class="primary">สร้างเช็กลิสต์ของฉัน</button>
+   <button id="resetChecklist">รีเซ็ต</button>
+  </div>
+  <div id="checklist" class="result">กดปุ่มเพื่อสร้างรายการตรวจสอบตามเกมและ FPS เป้าหมายที่เลือก</div>
+ </section>
+ <section class="card full">
+  <h3>🌐 ONLINE READY</h3>
+  <p class="desc">ไฟล์นี้เป็นเว็บไซต์หน้าเดียว สามารถเปิดในเบราว์เซอร์ได้ และนำไปโฮสต์ออนไลน์ได้โดยไม่ต้องมีเซิร์ฟเวอร์พิเศษ</p>
+  <div class="row"><button id="shareHelp">วิธีนำขึ้นออนไลน์</button><button id="copyInfo">คัดลอกข้อมูลอุปกรณ์</button></div>
+  <div class="result" id="onlineResult">หลังอัปโหลดไฟล์นี้ไปยังบริการโฮสต์เว็บไซต์ จะได้ลิงก์สำหรับแชร์ให้คนอื่นเปิดใช้งาน</div>
+ </section>
+</div>
+<div class="notice">ข้อจำกัดสำคัญ: เว็บไซต์นี้ไม่สามารถบังคับเกมอื่นให้ปลดล็อก 90/120 FPS, เปลี่ยนการตั้งค่าภายในเกม, อ่าน FPS ของเกมอื่น, หรือปรับ CPU/GPU/อุณหภูมิโดยตรงได้ การทำงานจริงขึ้นอยู่กับเกม อุปกรณ์ และสิทธิ์ของ Android</div>
+<footer>ICE FPS BOOST X · WEB EDITION<br>ไม่มีการแก้ไขไฟล์เกมหรือเปลี่ยนค่าระบบของอุปกรณ์</footer>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const fpsTarget=$('fpsTarget');
+function updateTarget(){
+ const n=parseInt(fpsTarget.value,10);$('targetDisplay').innerHTML=n+' <small>FPS TARGET</small>';
+ $('fpsAdvice').textContent=n+' FPS เป็นเพียงเป้าหมาย: ต้องมีตัวเลือกนี้ในเกม และจอ/อุปกรณ์ต้องรองรับด้วย';
+}
+fpsTarget.addEventListener('change',updateTarget);
+$('gameSelect').addEventListener('change',()=>{
+ const game=$('gameSelect').value;
+ $('gameAdvice').textContent=game+': ตรวจตัวเลือก Graphics / Frame Rate ภายในเกมเอง เพราะตัวเลือกต่างกันตามเวอร์ชันและอุปกรณ์';
+});
+function deviceCheck(){
+ $('screenSize').textContent=screen.width+' × '+screen.height+' CSS px';
+ $('pixelRatio').textContent=window.devicePixelRatio||'ไม่ทราบ';
+ $('browserInfo').textContent=(navigator.userAgent||'ไม่ทราบ').slice(0,95);
+ $('motionInfo').textContent=matchMedia('(prefers-reduced-motion: reduce)').matches?'ลดการเคลื่อนไหว':'ปกติ';
+ $('boostResult').textContent='ตรวจสอบแล้ว: หน้าจอเบราว์เซอร์ '+screen.width+' × '+screen.height+' CSS px · DPR '+(window.devicePixelRatio||'ไม่ทราบ')+'. เว็บไซต์อ่านค่า Hz จริงหรือเปลี่ยนการตั้งค่าเกมไม่ได้';
+}
+$('checkBtn').addEventListener('click',deviceCheck);
+$('boostBtn').addEventListener('click',()=>{
+ const n=parseInt(fpsTarget.value,10),game=$('gameSelect').value;
+ $('boostResult').textContent='โหมดแนะนำสำหรับ '+game+' · เป้าหมาย '+n+' FPS: เปิดการตั้งค่าในเกม เลือก Frame Rate สูงสุดที่มี และลดกราฟิกหากเฟรมตก ปุ่มนี้ไม่สามารถเปลี่ยนระบบหรือบังคับปลดล็อก FPS ได้';
+});
+$('checklistBtn').addEventListener('click',()=>{
+ const game=$('gameSelect').value, fps=fpsTarget.value;
+ $('checklist').innerHTML='<div class="statline">1. เกม <span>'+game+'</span></div>'+
+ '<div class="statline">2. FPS เป้าหมาย <span>'+fps+' (เลือกได้เฉพาะถ้าเกมรองรับ)</span></div>'+
+ '<div class="statline">3. กราฟิก <span>เริ่มจาก Smooth / Low หากเฟรมตก</span></div>'+
+ '<div class="statline">4. เครื่อง <span>ปิดแอปที่ไม่ใช้และอย่าปิดกั้นช่องระบายความร้อน</span></div>'+
+ '<div class="statline">5. ทดสอบ <span>เล่นช่วงสั้น ๆ แล้วดูความลื่นและความร้อน</span></div>';
+});
+$('resetChecklist').addEventListener('click',()=>{$('checklist').textContent='กดปุ่มเพื่อสร้างรายการตรวจสอบตามเกมและ FPS เป้าหมายที่เลือก';});
+$('shareHelp').addEventListener('click',()=>{
+ $('onlineResult').textContent='วิธีเผยแพร่: แตกไฟล์ ZIP นี้ แล้วอัปโหลด index.html, manifest.webmanifest และ icon.svg ไปยังบริการโฮสต์ static เช่น GitHub Pages หรือ Netlify จากนั้นเปิดการเผยแพร่ เว็บไซต์ไม่ต้องใช้ฐานข้อมูลหรือ API key';
+});
+$('copyInfo').addEventListener('click',async()=>{
+ const info='ICE FPS BOOST X\\nScreen: '+screen.width+'x'+screen.height+' CSS px\\nDPR: '+(window.devicePixelRatio||'unknown')+'\\nBrowser: '+navigator.userAgent;
+ try{await navigator.clipboard.writeText(info);$('onlineResult').textContent='คัดลอกข้อมูลอุปกรณ์แล้ว';}
+ catch(e){$('onlineResult').textContent=info+' (เบราว์เซอร์ไม่อนุญาตให้คัดลอกอัตโนมัติ)';}
+});
+deviceCheck();updateTarget();
+// Measures animation frame rate for this website only.
+const canvas=$('fpsCanvas'),ctx=canvas.getContext('2d');let last=0,frames=0,lastReport=0,values=[];
+function draw(t){
+ if(!lastReport)lastReport=t;
+ frames++;
+ if(t-lastReport>=1000){
+  const fps=Math.round(frames*1000/(t-lastReport));$('webFps').textContent=fps;values.push(fps);if(values.length>50)values.shift();
+  frames=0;lastReport=t;
+  ctx.clearRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='#173349';ctx.lineWidth=1;
+  for(let y=20;y<100;y+=20){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(canvas.width,y);ctx.stroke();}
+  ctx.strokeStyle='#45e6ff';ctx.lineWidth=3;ctx.beginPath();
+  values.forEach((v,i)=>{const x=values.length<2?0:i/(values.length-1)*canvas.width;const y=90-Math.min(v,144)/144*75;if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y)});ctx.stroke();
+ }
+ requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
